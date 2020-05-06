@@ -186,4 +186,7 @@
     <!-- Whether to notify fingerprint client of successful cancelled authentication
          (needed for some older vendor fingerprint HAL implementations) -->
     <java-symbol type="bool" name="config_fingerprintPostResetRunnableForAllClients" />
+
+    <!-- Smaller dot/u/v Notch -->
+    <java-symbol type="bool" name="config_haveDotNotch" />
 </resources>
