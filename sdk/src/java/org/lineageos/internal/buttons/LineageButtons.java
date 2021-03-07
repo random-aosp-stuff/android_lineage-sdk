@@ -27,6 +27,7 @@ import android.media.session.MediaSessionManager;
 import android.media.session.PlaybackState;
 import android.os.Handler;
 import android.os.Message;
+import android.os.SystemClock;
 import android.os.UserHandle;
 import android.util.Slog;
 import android.view.KeyEvent;
@@ -66,6 +67,18 @@ public final class LineageButtons {
         }
     }
 
+    private static final Object sInstanceLock = new Object();
+    private static LineageButtons sInstance;
+
+    public static LineageButtons getAttachedInstance(Context context) {
+        synchronized (sInstanceLock) {
+            if (sInstance != null) {
+                return sInstance;
+            }
+            return new LineageButtons(context);
+        }
+    }
+
     public LineageButtons(Context context) {
         mContext = context;
         mHandler = new ButtonHandler();
@@ -73,6 +86,8 @@ public final class LineageButtons {
 
         SettingsObserver observer = new SettingsObserver(new Handler());
         observer.observe();
+
+        sInstance = this;
     }
 
     public boolean handleVolumeKey(KeyEvent event, boolean isInteractive) {
@@ -153,6 +168,13 @@ public final class LineageButtons {
                 }
             }
         }
+    }
+
+    public void skipTrack() {
+        long when = SystemClock.uptimeMillis();
+        KeyEvent newEvent = new KeyEvent(when, when,
+                KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_MEDIA_NEXT, 0);
+        onSkipTrackEvent(newEvent);
     }
 
     private int getMediaControllerPlaybackState(MediaController controller) {
