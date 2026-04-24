@@ -1046,6 +1046,18 @@ public final class LineageSettings {
                 sBooleanValidator;
 
         /**
+         * Whether ringtone and alarms should stay on the phone speaker when personal audio
+         * accessories are connected.
+         * 0 = off, 1 = on
+         */
+        public static final String RING_ALARM_PERSONAL_AUDIO_SAFETY =
+                "ring_alarm_personal_audio_safety";
+
+        /** @hide */
+        public static final Validator RING_ALARM_PERSONAL_AUDIO_SAFETY_VALIDATOR =
+                sBooleanValidator;
+
+        /**
          * Navigation controls to Use
          */
         public static final String NAV_BUTTONS = "nav_buttons";
@@ -2142,6 +2154,8 @@ public final class LineageSettings {
                     INCREASING_RING_RAMP_UP_TIME_VALIDATOR);
             VALIDATORS.put(VOLUME_ADJUST_SOUNDS_ENABLED,
                     VOLUME_ADJUST_SOUNDS_ENABLED_VALIDATOR);
+            VALIDATORS.put(RING_ALARM_PERSONAL_AUDIO_SAFETY,
+                    RING_ALARM_PERSONAL_AUDIO_SAFETY_VALIDATOR);
             VALIDATORS.put(NAV_BUTTONS, NAV_BUTTONS_VALIDATOR);
             VALIDATORS.put(NAVIGATION_BAR_MENU_ARROW_KEYS,
                     NAVIGATION_BAR_MENU_ARROW_KEYS_VALIDATOR);

@@ -57,6 +57,9 @@
     <!-- Default value for swapping volume keys on rotation -->
     <bool name="def_swap_volume_keys_on_rotation">false</bool>
 
+    <!-- Default for keeping ringtone and alarms on the phone speaker -->
+    <bool name="def_ring_alarm_personal_audio_safety">false</bool>
+
     <!-- Default for LineageSettings.System.STATUS_BAR_BATTERY_STYLE
          * 0: Display the battery as icon in portrait mode
          * 1: Display the battery as a circle
